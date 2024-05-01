@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.diary.DiaryMapper">
+    <select id="selectDiaries" resultType="com.example.demo.diary.DiaryModel">
+        SELECT id, written_date, writer, details
+        FROM diaries
+    </select>
+
+    <insert id="insertDiary" parameterType="com.example.demo.diary.DiaryModel">
+        INSERT INTO diaries (id, written_date, writer, details)
+        VALUES (#{id}, #{written_date}, #{writer}, #{details});
+    </insert>
+
+    <update id="updateDiary" parameterType="com.example.demo.diary.DiaryModel">
+        UPDATE diaries
+        SET written_date = #{written_date},
+        writer = #{writer},
+        details = #{details}
+        WHERE id = #{id};
+    </update>
+
+    <delete id="deleteDiary">
+        DELETE
+        FROM diaries
+        WHERE id = #{diaryId};
+    </delete>
+</mapper>
