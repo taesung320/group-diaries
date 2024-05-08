@@ -7,17 +7,17 @@ public class UserModel {
     String initial;
     String color;
     String password;
-    String user_id;
+    String email;
 
 
-    public UserModel(int id, String name, int salary, String initial, String color, String password, String user_id) {
+    public UserModel(int id, String name, int salary, String initial, String color, String password, String email) {
         this.id = id;
         this.name = name;
         this.salary = salary;
         this.initial = initial;
         this.color = color;
         this.password = password;
-        this.user_id = user_id;
+        this.email = email;
     }
 
 
@@ -49,8 +49,8 @@ public class UserModel {
         this.password = password;
     }
 
-    public void setUser_id(String user_id) {
-        this.user_id = user_id;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public int getId() {
@@ -76,7 +76,7 @@ public class UserModel {
         return password;
     }
 
-    public String getUser_id() {
-        return user_id;
+    public String getEmail() {
+        return email;
     }
 }

@@ -16,28 +16,28 @@ public class DiaryController {
         this.diaryService = diaryService;
     }
 
-    @GetMapping("/diaries")
+    @GetMapping("/diaries") // 모든 일기 리스트 조회
     public HashMap<String, Object> getDiaries() {
-        HashMap<String, Object> result = new HashMap<>();
         List<DiaryModel> data = diaryService.getDiaries();
+
+        HashMap<String, Object> result = new HashMap<>();
         result.put("result", "success");
         result.put("data", data);
         return result;
     }
 
-    @PostMapping("/diaries")
+    @PostMapping("/diaries")    // 일기 생성
     public HashMap<String, String> insertDiary(@RequestBody DiaryModel diary) {
 
         diaryService.insertDiary(diary);
 
-        System.out.println(2);
         HashMap<String, String> result = new HashMap<>();
         result.put("result", "success");
         return result;
     }
 
-    @PutMapping("/diaries/{id}")
-    public HashMap<String, String> updateDiary(@RequestBody DiaryModel diaryData, @PathVariable(required = true) int id) {
+    @PutMapping("/diaries/{id}")    // 일기 수정
+    public HashMap<String, String> updateDiary(@PathVariable(required = true) int id, @RequestBody DiaryModel diaryData) {
 
         diaryService.updateDiary(id, diaryData);
 
@@ -46,7 +46,7 @@ public class DiaryController {
         return result;
     }
 
-    @DeleteMapping("/diaries/{id}")
+    @DeleteMapping("/diaries/{id}") // 일기 삭제
     public HashMap<String, String> deleteDiary(@PathVariable(required = true) int id, @RequestParam(defaultValue = "succ") String succMsg) {
 
         diaryService.deleteDiary(id);
@@ -55,4 +55,26 @@ public class DiaryController {
         result.put("result", succMsg);
         return result;
     }
+
+    @GetMapping("/diaries/{userId}")    // 사용자가 속해있는 모든 그룹의 일기 조회
+    public HashMap<String, Object> requestAllDiaries(@PathVariable(required = true) int userId) {
+        List<DiaryModel> data = diaryService.requestAllDiaries(userId);
+
+        HashMap<String, Object> result = new HashMap<>();
+        result.put("result", "success");
+        result.put("data", data);
+        return result;
+    }
+
+    @GetMapping("/diaries/{diaryId}")   // 일기 상세 내용 요청
+    public HashMap<String, Object> requestDiaryDetails(@PathVariable(required = true) int diaryId) {
+        DiaryModel data = diaryService.requestDiaryDetails(diaryId);
+
+        HashMap<String, Object> result = new HashMap<>();
+        result.put("result", "success");
+        result.put("data", data);
+        return result;
+    }
+
+
 }

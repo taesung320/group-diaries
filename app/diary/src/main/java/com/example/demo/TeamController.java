@@ -16,26 +16,29 @@ public class TeamController {
         this.teamService = teamService;
     }
 
+    // 모든 팀 리스트 조회
     @GetMapping("/teams")
     public HashMap<String, Object> getTeams() {
-        HashMap<String, Object> result = new HashMap<>();
         List<TeamModel> data = teamService.getTeams();
+
+        HashMap<String, Object> result = new HashMap<>();
         result.put("result", "success");
         result.put("data", data);
         return result;
     }
 
+    // 팀 생성
     @PostMapping("/teams")
     public HashMap<String, String> insertTeam(@RequestBody TeamModel team) {
 
         teamService.insertTeam(team);
 
-        System.out.println(2);
         HashMap<String, String> result = new HashMap<>();
         result.put("result", "success");
         return result;
     }
 
+    // 팀 수정
     @PutMapping("/teams/{id}")
     public HashMap<String, String> updateTeam(@RequestBody TeamModel teamData, @PathVariable(required = true) int id) {
 
@@ -46,6 +49,7 @@ public class TeamController {
         return result;
     }
 
+    // 팀 삭제
     @DeleteMapping("/teams/{id}")
     public HashMap<String, String> deleteTeam(@PathVariable(required = true) int id, @RequestParam(defaultValue = "succ") String succMsg) {
 
@@ -55,4 +59,19 @@ public class TeamController {
         result.put("result", succMsg);
         return result;
     }
+
+
+    // 현재 팀 이름 요청
+    @GetMapping("/teams/{teamId}")
+    public HashMap<String, Object> requestTeamName(@PathVariable int teamId) {
+        String data = teamService.requestTeamName(teamId);
+
+        HashMap<String, Object> result = new HashMap<>();
+        result.put("result", "success");
+        result.put("data", data);
+        return result;
+    }
+
+
+
 }

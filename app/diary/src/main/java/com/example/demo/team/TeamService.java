@@ -1,5 +1,7 @@
 package com.example.demo.team;
 
+import com.example.demo.member.MemberMapper;
+import com.example.demo.member.MemberModel;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -7,9 +9,14 @@ import java.util.List;
 @Service
 public class TeamService {
     private TeamMapper teamMapper;
+    private MemberMapper memberMapper;
 
-    public TeamService(TeamMapper teamMapper){
+
+
+
+    public TeamService(TeamMapper teamMapper, MemberMapper memberMapper){
         this.teamMapper = teamMapper;
+        this.memberMapper = memberMapper;
     }
 
     public List<TeamModel> getTeams() {
@@ -28,5 +35,16 @@ public class TeamService {
     public void deleteTeam(int teamId) {
         teamMapper.deleteTeam(teamId);
     }
+
+    // 사용자가 속한 팀 만들기 요청
+    public void requestCreateTeam(TeamModel team) {
+        teamMapper.requestCreateTeam(team);
+    }
+
+    // 현재 팀 이름 요청
+    public String requestTeamName(int teamId) {
+        return teamMapper.requestTeamName(teamId);
+    }
+
 
 }
