@@ -24,7 +24,7 @@ public interface TeamDiaryMapper {
     // 현재 팀에 공유된 일기 리스트 요청
     List<TeamDiaryModel> requestTeamDiaries(int teamId);
 
-    // 선택한 일기가 공유된 팀들의 id 요청
+    // 선택한 일기가 공유된 팀들의 id, 이름 요청
     List<Integer> requestSharedTeams(int diaryId);
 
 

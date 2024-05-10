@@ -15,7 +15,7 @@ public interface DiaryMapper {
 
     void deleteDiary(int diaryId);  // 일기 삭제
 
-    List<DiaryModel> requestAllDiaries(int userId); // 사용자가 속해있는 모든 그룹의 일기 조회
+    List<DiaryModel> requestAllTeamDiaries(int userId); // 사용자가 속해있는 모든 그룹의 일기 조회
 
     DiaryModel requestDiaryDetails(int diaryId);    // 일기 상세 내용 요청
 

@@ -22,4 +22,17 @@
         FROM teams
         WHERE id = #{teamId};
     </delete>
+
+    <insert id="requestCreateTeam" parameterType="com.example.demo.team.TeamModel">
+        INSERT INTO teams (id, team_name)
+        VALUES (#{id}, #{team_name});
+        INSERT INTO members (id, user_id, team_id, status, inviter_id)
+        VALUES (#{id}, #{user_id}, #{team_id}, #{status}, #{inviter_id});
+    </insert>
+
+    <select id="requestTeamName" parameterType="com.example.demo.team.TeamModel" resultType="com.example.demo.team.TeamModel">
+        SELECT team_name
+        FROM teams
+        WHERE id = #{teamId}
+    </select>
 </mapper>

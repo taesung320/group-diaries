@@ -60,9 +60,19 @@ public class TeamController {
         return result;
     }
 
+    // 사용자가 속한 팀 만들기 요청
+    @PostMapping("/makeUserTeam/{userId}")
+    public HashMap<String, String> requestCreateTeam(@PathVariable(required = true) int userId, @RequestBody TeamModel team) {
+
+        teamService.requestCreateTeam(userId, team);
+
+        HashMap<String, String> result = new HashMap<>();
+        result.put("result", "success");
+        return result;
+    }
 
     // 현재 팀 이름 요청
-    @GetMapping("/teams/{teamId}")
+    @GetMapping("/teamName/{teamId}")
     public HashMap<String, Object> requestTeamName(@PathVariable int teamId) {
         String data = teamService.requestTeamName(teamId);
 
@@ -71,7 +81,4 @@ public class TeamController {
         result.put("data", data);
         return result;
     }
-
-
-
 }

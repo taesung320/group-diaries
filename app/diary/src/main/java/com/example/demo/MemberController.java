@@ -2,6 +2,7 @@ package com.example.demo;
 
 import com.example.demo.member.MemberModel;
 import com.example.demo.member.MemberService;
+import com.example.demo.request.TeamRequest;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -86,6 +87,17 @@ public class MemberController {
     @GetMapping("/members/{userId}")
     public HashMap<String, Object> requestInvitedList(@PathVariable(required = true) int userId) {
         List<MemberModel> data = memberService.requestInvitedList(userId);
+
+        HashMap<String, Object> result = new HashMap<>();
+        result.put("result", "success");
+        result.put("data", data);
+        return result;
+    }
+
+    // 사용자가 멤버인 팀 리스트 요청
+    @GetMapping("/usersTeam/{userId}")
+    public HashMap<String, Object> requestUserTeamList(@PathVariable(required = true) int userId) {
+        List<TeamRequest> data = memberService.requestUserTeamList(userId);
 
         HashMap<String, Object> result = new HashMap<>();
         result.put("result", "success");

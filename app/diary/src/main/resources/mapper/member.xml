@@ -27,8 +27,8 @@
     </delete>
 
     <select id="requestTeamMembersName" parameterType="com.example.demo.member.MemberModel" resultType="com.example.demo.member.MemberModel">
-        SELECT user_id
-        FROM members
+        SELECT m.user_id, u.name
+        FROM members m JOIN users u ON m.user_id = u.id
         WHERE team_id = #{team_id};
     </select>
 
@@ -37,18 +37,18 @@
         VALUES (#{id}, #{user_id}, #{team_id}, #{status}, #{inviter_id});
     </insert>
 
-    <select id="requestInvitedList">
-        SELECT team_id, status, inviter_id, t.team_name
-        FROM members m JOIN teams t
-            ON m.team_id = t.id
-        WHERE user_id = #{userId} AND status != 1;
+    <select id="requestInvitedList" resultType="com.example.demo.member.MemberModel">
+        SELECT m.team_id, t.team_name, m.inviter_id, u.name, m.status
+        FROM members m JOIN teams t ON m.team_id = t.id
+        JOIN users u ON m.inviter_id = u.id
+        WHERE user_id = #{userId} AND status = 1;
     </select>
 
-    <select id="requestTeamList">
-        SELECT team_id, team_name
+    <select id="requestUserTeamList" resultType="com.example.demo.request.TeamRequest">
+        SELECT m.team_id, t.team_name
         FROM members m JOIN teams t
             ON m.team_id = t.id
         WHERE user_id = #{userId}
-          AND status != 0;
+          AND status = 0;
     </select>
 </mapper>

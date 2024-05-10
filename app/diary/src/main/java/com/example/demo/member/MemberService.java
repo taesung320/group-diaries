@@ -1,5 +1,6 @@
 package com.example.demo.member;
 
+import com.example.demo.request.TeamRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -50,8 +51,8 @@ public class MemberService {
     }
 
     // 사용자가 멤버인 팀 리스트 요청
-    public List<Integer> requestTeamList(int userId) {
-        return memberMapper.requestTeamList(userId);
+    public List<TeamRequest> requestUserTeamList(int userId) {
+        return memberMapper.requestUserTeamList(userId);
     }
 
 }

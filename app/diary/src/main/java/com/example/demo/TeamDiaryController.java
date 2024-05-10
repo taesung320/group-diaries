@@ -71,7 +71,7 @@ public class TeamDiaryController {
         return result;
     }
 
-    // 선택한 일기가 공유된 팀들의 id 요청
+    // 선택한 일기가 공유된 팀들의 id, 이름 요청
     @GetMapping("/teamDiaries/{diaryId}")
     public HashMap<String, Object> requestSharedTeams(@PathVariable(required = true) int diaryId) {
         List<Integer> data = teamDiaryService.requestSharedTeams(diaryId);

@@ -38,7 +38,7 @@ public class TeamDiaryService {
         return TeamDiaryMapper.requestTeamDiaries(teamId);
     }
 
-    // 선택한 일기가 공유된 팀들의 id 요청
+    // 선택한 일기가 공유된 팀들의 id, 이름 요청
     public List<Integer> requestSharedTeams(int diaryId) {
         return TeamDiaryMapper.requestSharedTeams(diaryId);
     }

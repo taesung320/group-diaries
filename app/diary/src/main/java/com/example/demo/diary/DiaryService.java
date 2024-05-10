@@ -34,8 +34,8 @@ public class DiaryService {
     }
 
     // 사용자가 포함된 모든 그룹의 일기 정보 요청
-    public List<DiaryModel> requestAllDiaries(int userId) {
-        return diaryMapper.requestAllDiaries(userId);
+    public List<DiaryModel> requestAllTeamDiaries(int userId) {
+        return diaryMapper.requestAllTeamDiaries(userId);
     }
 
     // 선택한 다이어리 상세 정보 요청

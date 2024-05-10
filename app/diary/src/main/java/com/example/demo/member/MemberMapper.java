@@ -1,5 +1,6 @@
 package com.example.demo.member;
 
+import com.example.demo.request.TeamRequest;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
@@ -22,6 +23,6 @@ public interface MemberMapper {
 
     List<MemberModel> requestInvitedList(int userId);  // 사용자가 초대된 팀 리스트 요청
 
-    List<Integer> requestTeamList(int userId);  // 사용자가 멤버인 팀 리스트 요청
+    List<TeamRequest> requestUserTeamList(int userId);  // 사용자가 멤버인 팀 리스트 요청
 
 }

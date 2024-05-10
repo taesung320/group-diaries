@@ -57,7 +57,7 @@ public class UserController {
     }
 
     // 사용자 이름 요청
-    @GetMapping("/users/{userId}")
+    @GetMapping("/users/name/{userId}")
     public HashMap<String, Object> requestUserName(@PathVariable(required = true) int userId) {
         String data = userService.requestUserName(userId);
 
@@ -67,16 +67,24 @@ public class UserController {
         return result;
     }
 
+    @GetMapping("/user/info/{userId}")
+    public HashMap<String, Object> requestUserInfo(@PathVariable(required = true) int userId) {
+        UserModel data = userService.requestUserInfo(userId);
+
+        HashMap<String, Object> result = new HashMap<>();
+        result.put("result", "success");
+        result.put("data", data);
+        return result;
+    }
 
     // 사용자 이메일 검색
-//    @GetMapping("/users")
-//    public HashMap<String, Object> userEmailSearchModel(@RequestBody String searchWord) {
-//        List<UserModel> data = userService.userEmailSearchModel(searchWord);
-//
-//        HashMap<String, Object> result = new HashMap<>();
-//        result.put("result", "success");
-//        result.put("data", data);
-//        return result;
-//    }
+    @GetMapping("/users/email")
+    public HashMap<String, Object> userEmailSearchModel(@RequestParam String searchWord) {
+        List<UserModel> data = userService.userEmailSearchModel(searchWord);
 
+        HashMap<String, Object> result = new HashMap<>();
+        result.put("result", "success");
+        result.put("data", data);
+        return result;
+    }
 }

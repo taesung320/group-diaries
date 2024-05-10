@@ -36,7 +36,7 @@ public class DiaryController {
         return result;
     }
 
-    @PutMapping("/diaries/{id}")    // 일기 수정
+    @PutMapping("/diaries/edit/{id}")    // 일기 수정
     public HashMap<String, String> updateDiary(@PathVariable(required = true) int id, @RequestBody DiaryModel diaryData) {
 
         diaryService.updateDiary(id, diaryData);
@@ -56,9 +56,9 @@ public class DiaryController {
         return result;
     }
 
-    @GetMapping("/diaries/{userId}")    // 사용자가 속해있는 모든 그룹의 일기 조회
-    public HashMap<String, Object> requestAllDiaries(@PathVariable(required = true) int userId) {
-        List<DiaryModel> data = diaryService.requestAllDiaries(userId);
+    @GetMapping("/diaries/all/{userId}")    // 사용자가 속해있는 모든 그룹의 일기 조회
+    public HashMap<String, Object> requestAllTeamDiaries(@PathVariable(required = true) int userId) {
+        List<DiaryModel> data = diaryService.requestAllTeamDiaries(userId);
 
         HashMap<String, Object> result = new HashMap<>();
         result.put("result", "success");
@@ -66,7 +66,7 @@ public class DiaryController {
         return result;
     }
 
-    @GetMapping("/diaries/{diaryId}")   // 일기 상세 내용 요청
+    @GetMapping("/diaries/details/{diaryId}")   // 일기 상세 내용 요청
     public HashMap<String, Object> requestDiaryDetails(@PathVariable(required = true) int diaryId) {
         DiaryModel data = diaryService.requestDiaryDetails(diaryId);
 
