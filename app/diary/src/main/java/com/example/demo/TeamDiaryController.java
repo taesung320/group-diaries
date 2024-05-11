@@ -1,5 +1,7 @@
 package com.example.demo;
 
+import com.example.demo.response.SharedTeamsResponse;
+import com.example.demo.response.TeamDiaryListResponse;
 import com.example.demo.teamDiary.TeamDiaryModel;
 import com.example.demo.teamDiary.TeamDiaryService;
 import org.springframework.web.bind.annotation.*;
@@ -61,9 +63,9 @@ public class TeamDiaryController {
     }
 
     // 현재 팀에 공유된 일기 리스트 요청
-    @GetMapping("/teamDiaries/{teamId}")
-    public HashMap<String, Object> requestTeamDiaries(@PathVariable(required = true) int teamId) {
-        List<TeamDiaryModel> data = teamDiaryService.requestTeamDiaries(teamId);
+    @GetMapping("/teamDiaries/diaryList/{teamId}")
+    public HashMap<String, Object> requestTeamDiaryList(@PathVariable(required = true) int teamId) {
+        List<TeamDiaryListResponse> data = teamDiaryService.requestTeamDiaryList(teamId);
 
         HashMap<String, Object> result = new HashMap<>();
         result.put("result", "success");
@@ -72,9 +74,9 @@ public class TeamDiaryController {
     }
 
     // 선택한 일기가 공유된 팀들의 id, 이름 요청
-    @GetMapping("/teamDiaries/{diaryId}")
+    @GetMapping("/teamDiaries/sharedTeams/{diaryId}")
     public HashMap<String, Object> requestSharedTeams(@PathVariable(required = true) int diaryId) {
-        List<Integer> data = teamDiaryService.requestSharedTeams(diaryId);
+        List<SharedTeamsResponse> data = teamDiaryService.requestSharedTeams(diaryId);
 
         HashMap<String, Object> result = new HashMap<>();
         result.put("result", "success");

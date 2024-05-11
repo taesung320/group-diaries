@@ -22,10 +22,10 @@ public interface UserMapper {
     void deleteUser(int userId);
 
     // 사용자 이름 요청
-    String requestUserName(int userId);
+//    String requestUserName(int userId);
 
     // 사용자 정보 요청
-    UserModel requestUserInfo(int userId);
+//    UserModel requestUserInfo(int userId);
 
     // 사용자 이메일 검색
     List<UserModel> userEmailSearchModel(String searchWord);

@@ -3,6 +3,7 @@ package com.example.demo;
 import com.example.demo.member.MemberModel;
 import com.example.demo.member.MemberService;
 import com.example.demo.request.TeamRequest;
+import com.example.demo.response.InvitedListResponse;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -84,9 +85,9 @@ public class MemberController {
     }
 
     // 사용자가 초대된 팀 리스트 요청
-    @GetMapping("/members/{userId}")
+    @GetMapping("/members/invited/{userId}")
     public HashMap<String, Object> requestInvitedList(@PathVariable(required = true) int userId) {
-        List<MemberModel> data = memberService.requestInvitedList(userId);
+        List<InvitedListResponse> data = memberService.requestInvitedList(userId);
 
         HashMap<String, Object> result = new HashMap<>();
         result.put("result", "success");
@@ -95,7 +96,7 @@ public class MemberController {
     }
 
     // 사용자가 멤버인 팀 리스트 요청
-    @GetMapping("/usersTeam/{userId}")
+    @GetMapping("/member/userTeamList/{userId}")
     public HashMap<String, Object> requestUserTeamList(@PathVariable(required = true) int userId) {
         List<TeamRequest> data = memberService.requestUserTeamList(userId);
 

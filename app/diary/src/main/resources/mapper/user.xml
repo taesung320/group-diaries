@@ -27,24 +27,26 @@
         WHERE id = #{userId};
     </delete>
 
-    <select id="requestUserName" resultType="com.example.demo.user.UserModel">
-        SELECT name
-        FROM users
-        WHERE id = #{userId}
-    </select>
+<!--    <select id="requestUserName" resultType="com.example.demo.user.UserModel">-->
+<!--        SELECT name-->
+<!--        FROM users-->
+<!--        WHERE id = #{userId}-->
+<!--    </select>-->
 
-    <select id="requestUserInfo" resultType="com.example.demo.user.UserModel">
-        SELECT id, name, initial, color, password, email
-        FROM users
-        WHERE id = #{userId}
-    </select>
+<!--    <select id="requestUserInfo" resultType="com.example.demo.user.UserModel">-->
+<!--        SELECT id, name, initial, color, password, email-->
+<!--        FROM users-->
+<!--        WHERE id = #{userId}-->
+<!--    </select>-->
 
     <select id="userEmailSearchModel" resultType="com.example.demo.user.UserModel">
         SELECT id, name, email
         FROM users
-        WHERE email LIKE ${'%'+searchWord+'%'}
+        WHERE email LIKE #{likeSearchWord};
     </select>
 </mapper>
+
+<!--    #{'%+searchWord+'%'}    -->
 
 
 

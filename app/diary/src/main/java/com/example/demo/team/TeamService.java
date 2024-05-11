@@ -1,7 +1,6 @@
 package com.example.demo.team;
 
-import com.example.demo.member.MemberMapper;
-import com.example.demo.member.MemberModel;
+import com.example.demo.request.CreateTeamRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -32,14 +31,8 @@ public class TeamService {
     }
 
     // 사용자가 속한 팀 만들기 요청
-    public void requestCreateTeam(int userId, TeamModel team) {
-        teamMapper.requestCreateTeam(team);
-    }
-
-    // 현재 팀 이름 요청
-    public String requestTeamName(int teamId) {
-        return teamMapper.requestTeamName(teamId);
-    }
-
+//    public void requestCreateTeam(int userId, CreateTeamRequest team) {
+//        teamMapper.requestCreateTeam(team);
+//    }
 
 }

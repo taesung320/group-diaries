@@ -1,6 +1,7 @@
 package com.example.demo.member;
 
 import com.example.demo.request.TeamRequest;
+import com.example.demo.response.InvitedListResponse;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -46,7 +47,7 @@ public class MemberService {
     }
 
     // 사용자가 초대된 팀 리스트 요청
-    public List<MemberModel> requestInvitedList(int userId) {
+    public List<InvitedListResponse> requestInvitedList(int userId) {
         return memberMapper.requestInvitedList(userId);
     }
 

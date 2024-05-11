@@ -1,5 +1,7 @@
 package com.example.demo.teamDiary;
 
+import com.example.demo.response.SharedTeamsResponse;
+import com.example.demo.response.TeamDiaryListResponse;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
@@ -22,10 +24,10 @@ public interface TeamDiaryMapper {
     void deleteTeamDiary(int teamDiaryId);
 
     // 현재 팀에 공유된 일기 리스트 요청
-    List<TeamDiaryModel> requestTeamDiaries(int teamId);
+    List<TeamDiaryListResponse> requestTeamDiaryList(int teamId);
 
     // 선택한 일기가 공유된 팀들의 id, 이름 요청
-    List<Integer> requestSharedTeams(int diaryId);
+    List<SharedTeamsResponse> requestSharedTeams(int diaryId);
 
 
 

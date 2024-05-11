@@ -34,14 +34,14 @@ public class UserService {
     }
 
     // 사용자 이름 요청
-    public String requestUserName(int userId) {
-        return userMapper.requestUserName(userId);
-    }
+//    public String requestUserName(int userId) {
+//        return userMapper.requestUserName(userId);
+//    }
 
     // 사용자 정보 요청
-    public UserModel requestUserInfo(int userId) {
-        return userMapper.requestUserInfo(userId);
-    }
+//    public UserModel requestUserInfo(int userId) {
+//        return userMapper.requestUserInfo(userId);
+//    }
 
     // 사용자 이메일 검색
     public List<UserModel> userEmailSearchModel(String searchWord) {

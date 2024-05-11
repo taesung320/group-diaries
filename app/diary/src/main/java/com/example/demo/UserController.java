@@ -57,30 +57,32 @@ public class UserController {
     }
 
     // 사용자 이름 요청
-    @GetMapping("/users/name/{userId}")
-    public HashMap<String, Object> requestUserName(@PathVariable(required = true) int userId) {
-        String data = userService.requestUserName(userId);
+//    @GetMapping("/users/name/{userId}")
+//    public HashMap<String, Object> requestUserName(@PathVariable(required = true) int userId) {
+//        String data = userService.requestUserName(userId);
+//
+//        HashMap<String, Object> result = new HashMap<>();
+//        result.put("result", "success");
+//        result.put("data", data);
+//        return result;
+//    }
 
-        HashMap<String, Object> result = new HashMap<>();
-        result.put("result", "success");
-        result.put("data", data);
-        return result;
-    }
-
-    @GetMapping("/user/info/{userId}")
-    public HashMap<String, Object> requestUserInfo(@PathVariable(required = true) int userId) {
-        UserModel data = userService.requestUserInfo(userId);
-
-        HashMap<String, Object> result = new HashMap<>();
-        result.put("result", "success");
-        result.put("data", data);
-        return result;
-    }
+//    @GetMapping("/user/info/{userId}")
+//    public HashMap<String, Object> requestUserInfo(@PathVariable(required = true) int userId) {
+//        UserModel data = userService.requestUserInfo(userId);
+//
+//        HashMap<String, Object> result = new HashMap<>();
+//        result.put("result", "success");
+//        result.put("data", data);
+//        return result;
+//    }
 
     // 사용자 이메일 검색
-    @GetMapping("/users/email")
-    public HashMap<String, Object> userEmailSearchModel(@RequestParam String searchWord) {
-        List<UserModel> data = userService.userEmailSearchModel(searchWord);
+    @GetMapping("/users/search")
+    public HashMap<String, Object> userEmailSearchModel(@RequestParam(defaultValue = "succ") String searchWord) {
+        String likeSearchWord = "%" + searchWord + "%";
+
+        List<UserModel> data = userService.userEmailSearchModel(likeSearchWord);
 
         HashMap<String, Object> result = new HashMap<>();
         result.put("result", "success");

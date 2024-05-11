@@ -1,5 +1,7 @@
 package com.example.demo.diary;
 
+import com.example.demo.response.AllTeamDiariesResponse;
+import com.example.demo.response.DiaryDetailsResponse;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
@@ -15,9 +17,9 @@ public interface DiaryMapper {
 
     void deleteDiary(int diaryId);  // 일기 삭제
 
-    List<DiaryModel> requestAllTeamDiaries(int userId); // 사용자가 속해있는 모든 그룹의 일기 조회
+    List<AllTeamDiariesResponse> requestAllTeamDiaries(int userId); // 사용자가 속해있는 모든 그룹의 일기 조회
 
-    DiaryModel requestDiaryDetails(int diaryId);    // 일기 상세 내용 요청
+    DiaryDetailsResponse requestDiaryDetails(int diaryId);    // 일기 상세 내용 요청
 
 
 }

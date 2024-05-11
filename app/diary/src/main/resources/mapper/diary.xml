@@ -26,17 +26,23 @@
         WHERE id = #{diaryId};
     </delete>
 
-    <select id="requestAllTeamDiaries" parameterType="com.example.demo.request.DiaryRequest">
-        SELECT d.written_date, d.diary_title, u.user_name, u.color, u.initial
+    <select id="requestAllTeamDiaries" resultType="com.example.demo.response.AllTeamDiariesResponse">
+        SELECT d.written_date, d.diary_title, u.name, u.color, u.initial
         FROM diaries d JOIN users u
             ON d.writer_id = u.id
-        WHERE u.id = #{UserModel.id};
+        WHERE d.id IN
+              (SELECT diary_id
+                FROM team_diary
+                WHERE team_id IN
+                    (SELECT team_id
+                        FROM members
+                        WHERE user_id = #{userId}));
     </select>
 
-    <select id="requestDiaryDetails" resultType="com.example.demo.diary.DiaryModel">
+    <select id="requestDiaryDetails" resultType="com.example.demo.response.DiaryDetailsResponse">
         SELECT d.written_date, d.diary_title, d.details, td.team_id, t.team_name
         FROM diaries d JOIN team_diary td ON d.id = td.diary_id
         JOIN teams t ON td.team_id = t.id
-        WHERE id = #{diaryId};
+        WHERE d.id = #{diaryId};
     </select>
 </mapper>

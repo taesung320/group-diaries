@@ -1,5 +1,7 @@
 package com.example.demo.diary;
 
+import com.example.demo.response.AllTeamDiariesResponse;
+import com.example.demo.response.DiaryDetailsResponse;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -34,12 +36,12 @@ public class DiaryService {
     }
 
     // 사용자가 포함된 모든 그룹의 일기 정보 요청
-    public List<DiaryModel> requestAllTeamDiaries(int userId) {
+    public List<AllTeamDiariesResponse> requestAllTeamDiaries(int userId) {
         return diaryMapper.requestAllTeamDiaries(userId);
     }
 
     // 선택한 다이어리 상세 정보 요청
-    public DiaryModel requestDiaryDetails(int diaryId) {
+    public DiaryDetailsResponse requestDiaryDetails(int diaryId) {
         return diaryMapper.requestDiaryDetails(diaryId);
     }
 

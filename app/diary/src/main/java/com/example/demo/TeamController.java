@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import com.example.demo.request.CreateTeamRequest;
 import com.example.demo.team.TeamModel;
 import com.example.demo.team.TeamService;
 import org.springframework.web.bind.annotation.*;
@@ -60,25 +61,15 @@ public class TeamController {
         return result;
     }
 
-    // 사용자가 속한 팀 만들기 요청
-    @PostMapping("/makeUserTeam/{userId}")
-    public HashMap<String, String> requestCreateTeam(@PathVariable(required = true) int userId, @RequestBody TeamModel team) {
+//    // 사용자가 속한 팀 만들기 요청
+//    @PostMapping("/teams/create/{userId}")
+//    public HashMap<String, String> requestCreateTeam(@PathVariable(required = true) int userId, @RequestBody CreateTeamRequest team) {
+//
+//        teamService.requestCreateTeam(userId, team);
+//
+//        HashMap<String, String> result = new HashMap<>();
+//        result.put("result", "success");
+//        return result;
+//    }
 
-        teamService.requestCreateTeam(userId, team);
-
-        HashMap<String, String> result = new HashMap<>();
-        result.put("result", "success");
-        return result;
-    }
-
-    // 현재 팀 이름 요청
-    @GetMapping("/teamName/{teamId}")
-    public HashMap<String, Object> requestTeamName(@PathVariable int teamId) {
-        String data = teamService.requestTeamName(teamId);
-
-        HashMap<String, Object> result = new HashMap<>();
-        result.put("result", "success");
-        result.put("data", data);
-        return result;
-    }
 }

@@ -6,12 +6,12 @@ public class DiaryDetailsResponse {
     String written_date;
     String details;
     int team_id;
-    int team_name;
+    String team_name;
 
     public DiaryDetailsResponse() {
     }
 
-    public DiaryDetailsResponse(String diary_title, String written_date, String details, int team_id, int team_name) {
+    public DiaryDetailsResponse(String diary_title, String written_date, String details, int team_id, String team_name) {
         this.diary_title = diary_title;
         this.written_date = written_date;
         this.details = details;
@@ -35,7 +35,7 @@ public class DiaryDetailsResponse {
         return team_id;
     }
 
-    public int getTeam_name() {
+    public String getTeam_name() {
         return team_name;
     }
 
@@ -55,7 +55,7 @@ public class DiaryDetailsResponse {
         this.team_id = team_id;
     }
 
-    public void setTeam_name(int team_name) {
+    public void setTeam_name(String team_name) {
         this.team_name = team_name;
     }
 }

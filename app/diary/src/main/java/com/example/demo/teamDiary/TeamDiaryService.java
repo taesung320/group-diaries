@@ -1,5 +1,7 @@
 package com.example.demo.teamDiary;
 
+import com.example.demo.response.SharedTeamsResponse;
+import com.example.demo.response.TeamDiaryListResponse;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -34,12 +36,12 @@ public class TeamDiaryService {
     }
 
     // 현재 팀에 공유된 일기 리스트 요청
-    public List<TeamDiaryModel> requestTeamDiaries(int teamId) {
-        return TeamDiaryMapper.requestTeamDiaries(teamId);
+    public List<TeamDiaryListResponse> requestTeamDiaryList(int teamId) {
+        return TeamDiaryMapper.requestTeamDiaryList(teamId);
     }
 
     // 선택한 일기가 공유된 팀들의 id, 이름 요청
-    public List<Integer> requestSharedTeams(int diaryId) {
+    public List<SharedTeamsResponse> requestSharedTeams(int diaryId) {
         return TeamDiaryMapper.requestSharedTeams(diaryId);
     }
 

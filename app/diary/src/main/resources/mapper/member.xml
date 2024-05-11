@@ -37,14 +37,14 @@
         VALUES (#{id}, #{user_id}, #{team_id}, #{status}, #{inviter_id});
     </insert>
 
-    <select id="requestInvitedList" resultType="com.example.demo.member.MemberModel">
+    <select id="requestInvitedList" resultType="com.example.demo.response.InvitedListResponse">
         SELECT m.team_id, t.team_name, m.inviter_id, u.name, m.status
         FROM members m JOIN teams t ON m.team_id = t.id
         JOIN users u ON m.inviter_id = u.id
         WHERE user_id = #{userId} AND status = 1;
     </select>
 
-    <select id="requestUserTeamList" resultType="com.example.demo.request.TeamRequest">
+    <select id="requestUserTeamList" resultType="com.example.demo.response.UserTeamListResponse">
         SELECT m.team_id, t.team_name
         FROM members m JOIN teams t
             ON m.team_id = t.id

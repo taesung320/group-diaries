@@ -2,6 +2,8 @@ package com.example.demo;
 
 import com.example.demo.diary.DiaryModel;
 import com.example.demo.diary.DiaryService;
+import com.example.demo.response.AllTeamDiariesResponse;
+import com.example.demo.response.DiaryDetailsResponse;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -58,7 +60,7 @@ public class DiaryController {
 
     @GetMapping("/diaries/all/{userId}")    // 사용자가 속해있는 모든 그룹의 일기 조회
     public HashMap<String, Object> requestAllTeamDiaries(@PathVariable(required = true) int userId) {
-        List<DiaryModel> data = diaryService.requestAllTeamDiaries(userId);
+        List<AllTeamDiariesResponse> data = diaryService.requestAllTeamDiaries(userId);
 
         HashMap<String, Object> result = new HashMap<>();
         result.put("result", "success");
@@ -68,7 +70,7 @@ public class DiaryController {
 
     @GetMapping("/diaries/details/{diaryId}")   // 일기 상세 내용 요청
     public HashMap<String, Object> requestDiaryDetails(@PathVariable(required = true) int diaryId) {
-        DiaryModel data = diaryService.requestDiaryDetails(diaryId);
+        DiaryDetailsResponse data = diaryService.requestDiaryDetails(diaryId);
 
         HashMap<String, Object> result = new HashMap<>();
         result.put("result", "success");
